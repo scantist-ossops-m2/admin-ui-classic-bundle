@@ -26,9 +26,8 @@ class PimcoreUserTwoFactorCondition implements TwoFactorConditionInterface
 {
     public function shouldPerformTwoFactorAuthentication(AuthenticationContextInterface $context): bool
     {
-        //return true for performing two factor for firewalls other than admin
         if ($context->getFirewallName() !== 'pimcore_admin') {
-            return true;
+            return false;
         }
 
         $user = $context->getUser();
